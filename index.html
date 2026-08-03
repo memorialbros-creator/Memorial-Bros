@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ==========================================================================
+     MEMORIAL BROS — memorialbros.com
+     Single-file static site. No frameworks, no CDN, no build step.
+
+     ✅ LIVE DETAILS (already set)
+        Phone  (417) 414-8650  ·  Email  memorialbros@gmail.com
+        Area   Houston, TX
+
+     ⚙️  STILL TO DO BEFORE GOING LIVE
+     ──────────────────────────────────────────────────────────────
+     1. PHOTOS — swap each .ph placeholder block for a real image:
+        <img src="photos/driveway-after.jpg" alt="..." loading="lazy">
+        Priority: the before/after pair in #results, then the hero shot.
+     2. REVIEWS — the three in #reviews are bracketed placeholders.
+        Replace with real customer quotes, or delete the whole section
+        until you have some. Do not publish invented testimonials.
+     3. AREAS — confirm the neighborhood list in #area is where you
+        actually work. It's real local-SEO weight, so make it accurate.
+     4. PRICING — the #pricing table is straight from the "Suggested quote"
+        column of your quoting model. If the model changes, change it there.
+     5. OPTIONAL: FORM_ENDPOINT in the <script> at the bottom. Left blank,
+        the quote form opens a pre-filled text to (417) 414-8650, which
+        needs no third-party service and converts fine on phones.
+     ========================================================================== -->
+
+<title>Memorial Bros — Pressure Washing &amp; Exterior Cleaning in Houston, TX</title>
+<meta name="description" content="Memorial Bros pressure washes driveways, patios, decks, fences, siding and more. Family-run, insured, free estimates. Serving Houston and surrounding areas.">
+<meta name="theme-color" content="#0f0f12">
+<link rel="canonical" href="https://memorialbros.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://memorialbros.com/">
+<meta property="og:title" content="Memorial Bros — Pressure Washing &amp; Exterior Cleaning">
+<meta property="og:description" content="Driveways, patios, decks, fences, siding, gutters. Family-run and insured. Free estimates, fast text-back quotes.">
+<meta property="og:image" content="https://memorialbros.com/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="180x180" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+
+<style>
+:root{
+  /* ---- BRAND PALETTE ---------------------------------------------
+     Sampled directly out of logo.png, not eyeballed:
+       #b70205  the banner red (16% of the logo's opaque pixels)
+       #000000  the outline black
+       #ffffff  the wordmark
+     White text on --red is 6.9:1 — passes WCAG AA at every size.
+     Change --red here and the entire site follows.                   */
+  --red:#b70205;
+  --red-dk:#8b0104;
+  --red-lt:#e11419;
+  --red-tint:#fdeaeb;
+  --red-line:#f0bfc1;
+  --black:#101014;
+  --black-2:#1a1a20;
+  --black-3:#08080a;
+  --chrome:#c9ced4;
+
+  --ink:#15151a;
+  --body:#54555c;
+  --line:#e6e7ea;
+  --paper:#ffffff;
+  --wash:#f7f7f9;
+
+  --shadow:0 1px 2px rgba(15,15,18,.06),0 8px 24px rgba(15,15,18,.09);
+  --shadow-lg:0 24px 60px rgba(15,15,18,.22);
+  --r:14px;
+  --wrap:1140px;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+
+  /* legacy names kept as aliases so every existing rule follows the
+     brand palette without being rewritten one by one */
+  --navy:var(--black);
+  --navy-2:var(--black-2);
+  --blue:var(--red);
+  --blue-dk:var(--red-dk);
+  --aqua:var(--red-lt);
+  --lime:var(--red);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;font-family:var(--sans);color:var(--body);background:var(--paper);
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{color:var(--ink);line-height:1.12;margin:0 0 .5em;letter-spacing:-.02em;font-weight:800}
+h1{font-size:clamp(2.1rem,6vw,4rem);letter-spacing:-.035em}
+h2{font-size:clamp(1.7rem,3.6vw,2.6rem);letter-spacing:-.03em}
+h3{font-size:1.18rem}
+p{margin:0 0 1em}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%;height:auto;display:block}
+ul{margin:0;padding:0;list-style:none}
+:focus-visible{outline:3px solid var(--aqua);outline-offset:3px;border-radius:6px}
+
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 22px}
+section{padding:clamp(54px,8vw,96px) 0}
+.eyebrow{
+  font-size:.78rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--blue);margin:0 0 .8em;
+}
+.lede{font-size:clamp(1.02rem,2vw,1.2rem);max-width:60ch}
+.center{text-align:center}
+.center .lede{margin-left:auto;margin-right:auto}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5em;
+  font:inherit;font-weight:750;font-size:1.02rem;
+  padding:15px 26px;border-radius:999px;border:2px solid transparent;
+  cursor:pointer;text-decoration:none!important;white-space:nowrap;
+  transition:transform .12s ease,box-shadow .18s ease,background .18s ease;
+}
+.btn:active{transform:translateY(1px)}
+/* red = the one action we want most (call). black = everything else. */
+.btn-call{background:var(--red);color:#fff;box-shadow:0 6px 20px rgba(183,2,5,.38)}
+.btn-call:hover{background:var(--red-lt);box-shadow:0 10px 30px rgba(183,2,5,.5)}
+.btn-primary{background:var(--black);color:#fff;box-shadow:0 6px 20px rgba(15,15,18,.28)}
+.btn-primary:hover{background:var(--black-2)}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.42)}
+.btn-ghost:hover{background:rgba(255,255,255,.12);border-color:#fff}
+.btn-outline{background:#fff;color:var(--ink);border-color:var(--line)}
+.btn-outline:hover{border-color:var(--red);color:var(--red)}
+.btn-sm{padding:11px 20px;font-size:.94rem}
+.btn-lg{padding:18px 34px;font-size:1.1rem}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px}
+.center .btn-row{justify-content:center}
+
+/* ---------- header ---------- */
+.hdr{
+  position:sticky;top:0;z-index:60;background:rgba(15,15,18,.93);
+  backdrop-filter:saturate(150%) blur(12px);
+  border-bottom:1px solid rgba(255,255,255,.09);
+  box-shadow:inset 0 -2px 0 var(--red);
+}
+.hdr-in{display:flex;align-items:center;gap:18px;min-height:74px}
+.brand{display:flex;align-items:center;gap:11px;color:#fff;font-weight:850;letter-spacing:-.02em;font-size:1.14rem}
+.brand:hover{text-decoration:none}
+.brand-mark{
+  width:34px;height:34px;flex:none;border-radius:9px;display:grid;place-items:center;
+  background:linear-gradient(150deg,var(--red-lt),var(--red-dk));font-size:1.05rem;
+  box-shadow:0 3px 10px rgba(183,2,5,.4);
+}
+/* logo.png = the supplied logo with its white background flood-filled out.
+   It carries its own generous margin, so it needs more height than a
+   wordmark would to read at the same size. */
+.brand-logo{height:50px;width:auto;display:block}
+.ftr .brand-logo{height:62px;margin-bottom:14px}
+@media(max-width:520px){ .brand-logo{height:42px} }
+.brand small{display:block;font-size:.62rem;font-weight:700;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--chrome);line-height:1.2;margin-top:1px}
+.nav{margin-left:auto;display:flex;align-items:center;gap:26px}
+.nav a{color:rgba(255,255,255,.86);font-weight:600;font-size:.96rem}
+.nav a:hover{color:#fff;text-decoration:none}
+.hdr .btn-call{padding:11px 20px;font-size:.94rem}
+@media(max-width:860px){ .nav a:not(.btn){display:none} .nav{gap:10px} .brand small{display:none} }
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;overflow:hidden;color:#fff;
+  background:
+    radial-gradient(880px 520px at 80% 6%,rgba(205,12,18,.42),transparent 62%),
+    radial-gradient(680px 430px at 4% 96%,rgba(183,2,5,.30),transparent 60%),
+    linear-gradient(168deg,#17171c 0%,var(--black) 55%,var(--black-3) 100%);
+  padding:clamp(56px,8vw,104px) 0 clamp(60px,8vw,100px);
+}
+/* the logo's diagonal slash, echoed across the hero */
+.hero::before{
+  content:"";position:absolute;pointer-events:none;
+  left:-12%;right:-12%;top:56%;height:130px;
+  transform:rotate(-7deg);opacity:.62;
+  background:linear-gradient(90deg,
+    transparent 0%,
+    rgba(205,12,18,.6) 18%,
+    rgba(214,16,22,.85) 46%,
+    rgba(183,2,5,.45) 72%,
+    transparent 100%);
+  filter:blur(28px);
+}
+/* faint spray flecks */
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%,rgba(255,255,255,.5),transparent),
+    radial-gradient(1.5px 1.5px at 70% 20%,rgba(255,90,96,.65),transparent),
+    radial-gradient(2px 2px at 85% 62%,rgba(255,255,255,.35),transparent),
+    radial-gradient(1.5px 1.5px at 40% 78%,rgba(255,90,96,.5),transparent),
+    radial-gradient(1.5px 1.5px at 58% 45%,rgba(255,255,255,.3),transparent);
+}
+.hero .wrap{position:relative;z-index:2}
+.hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:clamp(28px,5vw,64px);align-items:center}
+@media(max-width:940px){ .hero-grid{grid-template-columns:1fr;gap:34px} }
+.hero h1{color:#fff}
+.hero h1 em{font-style:normal;color:var(--aqua)}
+.hero .lede{color:rgba(255,255,255,.84);font-size:clamp(1.05rem,2.1vw,1.28rem)}
+.pill{
+  display:inline-flex;align-items:center;gap:8px;margin-bottom:20px;
+  padding:7px 15px 7px 11px;border-radius:999px;font-size:.86rem;font-weight:700;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:#fff;
+}
+.pill .dot{width:8px;height:8px;border-radius:50%;background:var(--lime);
+  box-shadow:0 0 0 4px rgba(183,2,5,.3)}
+.hero-note{margin:18px 0 0;font-size:.9rem;color:rgba(255,255,255,.6)}
+
+/* hero photo card */
+.shot{
+  position:relative;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-lg);
+  border:1px solid rgba(255,255,255,.14);background:#0e2438;
+}
+.shot .ph{aspect-ratio:4/3.1}
+.shot-tag{
+  position:absolute;left:14px;bottom:14px;z-index:3;
+  background:rgba(10,10,12,.84);backdrop-filter:blur(8px);color:#fff;
+  padding:9px 15px;border-radius:11px;font-size:.86rem;font-weight:700;
+  border:1px solid rgba(255,255,255,.16);
+}
+
+/* photo placeholder — replace with <img> */
+.ph{
+  display:grid;place-items:center;text-align:center;gap:4px;padding:22px;
+  background:
+    linear-gradient(135deg,rgba(183,2,5,.22),rgba(183,2,5,.07)),
+    repeating-linear-gradient(45deg,#1a1a1f 0 14px,#232329 14px 28px);
+  color:rgba(255,255,255,.62);font-size:.84rem;font-weight:700;line-height:1.4;
+}
+.ph b{display:block;font-size:1.6rem;margin-bottom:2px;opacity:.75}
+.ph.light{
+  background:
+    linear-gradient(135deg,rgba(183,2,5,.09),rgba(183,2,5,.03)),
+    repeating-linear-gradient(45deg,#f2f2f4 0 14px,#e9e9ec 14px 28px);
+  color:#8a8b93;
+}
+
+/* ---------- trust strip ---------- */
+.trust{background:var(--navy-2);border-top:1px solid rgba(255,255,255,.08);padding:0}
+.trust ul{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:2px;
+}
+.trust li{
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  padding:20px 14px;color:#fff;font-weight:700;font-size:.94rem;text-align:center;
+}
+.trust svg{flex:none;color:var(--aqua)}
+@media(max-width:760px){ .trust ul{grid-template-columns:repeat(2,1fr)} .trust li{font-size:.86rem;padding:16px 10px} }
+
+/* ---------- services ---------- */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:18px;margin-top:38px}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px 24px;
+  box-shadow:var(--shadow);transition:transform .16s ease,box-shadow .2s ease,border-color .2s ease;
+}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(15,15,18,.14);border-color:var(--red-line)}
+.card h3{margin-bottom:.35em}
+.card p{margin:0;font-size:.97rem}
+.ico{
+  width:48px;height:48px;border-radius:12px;display:grid;place-items:center;
+  background:linear-gradient(150deg,var(--red-tint),#fbdcde);font-size:1.45rem;margin-bottom:16px;
+  border:1px solid var(--red-line);
+}
+.price{
+  display:inline-block;margin-top:14px;font-size:.84rem;font-weight:800;color:var(--red-dk);
+  background:var(--red-tint);border:1px solid var(--red-line);padding:5px 12px;border-radius:999px;
+}
+.price.ask{color:#71727a;background:var(--wash);border-color:var(--line)}
+.more{
+  margin-top:20px;background:var(--wash);border:1px dashed #c9d8e4;border-radius:var(--r);
+  padding:22px 24px;
+}
+.more h3{margin-bottom:.3em}
+.more-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.more-list li{
+  background:#fff;border:1px solid var(--line);border-radius:999px;
+  padding:6px 14px;font-size:.9rem;font-weight:650;color:var(--ink);
+}
+
+/* ---------- price table ---------- */
+.pt-wrap{max-width:820px;margin:38px auto 0}
+.pt-card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-lg);overflow:hidden}
+.pt-head{
+  background:var(--navy);color:#fff;padding:20px 26px;
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px;
+}
+.pt-head h3{color:#fff;margin:0;font-size:1.15rem}
+.pt-head span{font-size:.87rem;color:rgba(255,255,255,.65);font-weight:600}
+table.pt{width:100%;border-collapse:collapse;font-size:1rem}
+table.pt th,table.pt td{padding:14px 26px;text-align:left;border-bottom:1px solid var(--line)}
+table.pt th{
+  font-size:.75rem;letter-spacing:.13em;text-transform:uppercase;color:#82838b;
+  font-weight:800;background:var(--wash);
+}
+table.pt td:last-child,table.pt th:last-child{text-align:right}
+table.pt tbody tr:last-child td{border-bottom:none}
+table.pt tbody tr:hover{background:#fbfbfc}
+table.pt .sz{font-weight:750;color:var(--ink);white-space:nowrap}
+table.pt .desc{color:var(--body);font-size:.94rem}
+table.pt .amt{font-weight:850;color:var(--ink);font-size:1.1rem;white-space:nowrap}
+tr.pt-feature{background:var(--red-tint)!important}
+tr.pt-feature .sz::after{
+  content:"MOST COMMON";display:inline-block;margin-left:9px;vertical-align:middle;
+  font-size:.62rem;letter-spacing:.1em;font-weight:850;color:#fff;background:var(--blue);
+  padding:3px 8px;border-radius:999px;
+}
+@media(max-width:620px){
+  table.pt th:nth-child(2),table.pt td:nth-child(2){display:none}
+  table.pt th,table.pt td{padding:13px 18px}
+  .pt-head{padding:18px}
+}
+.pt-foot{padding:22px 26px;background:var(--wash);border-top:1px solid var(--line);font-size:.93rem}
+.pt-foot p{margin:0 0 10px}
+.pt-foot p:last-child{margin:0}
+.pt-foot b{color:var(--ink)}
+.adj{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
+.adj li{
+  background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;
+  font-size:.87rem;font-weight:650;color:var(--ink);
+}
+
+/* ---------- before / after ---------- */
+.ba-wrap{max-width:880px;margin:34px auto 0}
+.ba{
+  position:relative;border-radius:18px;overflow:hidden;box-shadow:var(--shadow-lg);
+  aspect-ratio:16/10;background:#0e2438;touch-action:pan-y;user-select:none;
+}
+.ba-layer{position:absolute;inset:0}
+.ba-layer .ph,.ba-layer img{width:100%;height:100%;object-fit:cover}
+.ba-after{clip-path:inset(0 0 0 50%)}
+.ba-tag{
+  position:absolute;bottom:14px;z-index:4;padding:7px 14px;border-radius:9px;
+  font-size:.8rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  background:rgba(10,10,12,.82);color:#fff;border:1px solid rgba(255,255,255,.18);
+  backdrop-filter:blur(6px);pointer-events:none;
+}
+.ba-tag.l{left:14px}
+.ba-tag.r{right:14px;background:var(--red);color:#fff;border-color:transparent}
+.ba-handle{
+  position:absolute;top:0;bottom:0;width:3px;background:#fff;z-index:5;
+  left:50%;transform:translateX(-50%);pointer-events:none;box-shadow:0 0 14px rgba(0,0,0,.55);
+}
+.ba-handle::after{
+  content:"⇄";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:46px;height:46px;border-radius:50%;background:#fff;color:var(--red);
+  display:grid;place-items:center;font-size:1.15rem;font-weight:800;
+  box-shadow:0 5px 18px rgba(0,0,0,.34);
+}
+.ba-range{
+  position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;z-index:6;
+}
+.ba-hint{text-align:center;font-size:.88rem;color:#82838b;margin:14px 0 0}
+
+/* ---------- steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px;counter-reset:s}
+@media(max-width:820px){ .steps{grid-template-columns:1fr} }
+.step{
+  position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r);
+  padding:30px 24px 26px;box-shadow:var(--shadow);counter-increment:s;
+}
+.step::before{
+  content:counter(s);position:absolute;top:-16px;left:24px;
+  width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
+  background:var(--navy);color:var(--aqua);font-weight:850;font-size:1.05rem;
+  box-shadow:0 5px 14px rgba(15,15,18,.28);
+}
+.step h3{margin-top:8px}
+.step p{margin:0;font-size:.97rem}
+
+/* ---------- reviews ---------- */
+.reviews{background:var(--wash);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:36px}
+.rev{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px 24px;box-shadow:var(--shadow)}
+.stars{color:#f5a623;font-size:1.05rem;letter-spacing:2px;margin-bottom:12px}
+.rev blockquote{margin:0 0 16px;font-size:1.02rem;color:var(--ink);line-height:1.6}
+.rev cite{font-style:normal;font-weight:750;color:var(--ink);font-size:.94rem}
+.rev cite span{display:block;font-weight:600;color:var(--body);font-size:.86rem}
+
+/* ---------- area ---------- */
+.area-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(26px,5vw,56px);align-items:center}
+@media(max-width:880px){ .area-grid{grid-template-columns:1fr} }
+.areas{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+.areas li{
+  background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 15px;
+  font-size:.93rem;font-weight:650;color:var(--ink);
+}
+.map-card{border-radius:18px;overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid var(--line)}
+.map-card .ph{aspect-ratio:4/3}
+
+/* ---------- quote / form ---------- */
+.quote{
+  position:relative;overflow:hidden;color:#fff;
+  background:
+    radial-gradient(760px 440px at 86% 10%,rgba(205,12,18,.4),transparent 62%),
+    linear-gradient(168deg,#17171c,var(--black) 60%,var(--black-3));
+}
+.quote::before{
+  content:"";position:absolute;pointer-events:none;
+  left:-12%;right:-12%;bottom:12%;height:120px;transform:rotate(-7deg);
+  background:linear-gradient(90deg,transparent,rgba(205,12,18,.7) 40%,rgba(183,2,5,.3) 75%,transparent);
+  filter:blur(30px);opacity:.6;
+}
+.quote .wrap{position:relative;z-index:2}
+.quote h2{color:#fff}
+.quote .lede{color:rgba(255,255,255,.82)}
+.quote-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(30px,5vw,60px);align-items:start}
+@media(max-width:940px){ .quote-grid{grid-template-columns:1fr} }
+.contact-list{margin-top:26px;display:grid;gap:14px}
+.contact-list a{
+  display:flex;align-items:center;gap:14px;color:#fff;font-weight:700;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);
+  border-radius:12px;padding:15px 18px;transition:background .16s ease,border-color .16s ease;
+}
+.contact-list a:hover{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.32);text-decoration:none}
+.contact-list .ci{
+  width:40px;height:40px;flex:none;border-radius:10px;display:grid;place-items:center;
+  background:rgba(183,2,5,.28);font-size:1.15rem;
+}
+.contact-list small{display:block;font-weight:600;font-size:.8rem;color:rgba(255,255,255,.6)}
+
+form.qf{
+  background:#fff;border-radius:18px;padding:clamp(24px,3.4vw,34px);box-shadow:var(--shadow-lg);
+}
+form.qf h3{font-size:1.3rem;margin-bottom:.2em}
+form.qf .sub{font-size:.94rem;margin:0 0 22px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){ .f-row{grid-template-columns:1fr} }
+.field{margin-bottom:14px}
+.field label{display:block;font-weight:700;font-size:.88rem;color:var(--ink);margin-bottom:6px}
+.field .req{color:#d0342c}
+.field input,.field select,.field textarea{
+  width:100%;font:inherit;font-size:1rem;color:var(--ink);background:#fcfcfd;
+  border:1.5px solid var(--line);border-radius:11px;padding:13px 14px;
+  transition:border-color .15s ease,box-shadow .15s ease;
+}
+.field textarea{min-height:104px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:none;border-color:var(--red);box-shadow:0 0 0 4px rgba(183,2,5,.14);background:#fff;
+}
+form.qf .btn{width:100%;margin-top:6px}
+.f-note{font-size:.83rem;color:#82838b;margin:14px 0 0;text-align:center}
+.f-msg{
+  display:none;margin-top:16px;padding:15px 18px;border-radius:12px;
+  font-weight:700;font-size:.96rem;line-height:1.5;
+}
+.f-msg.ok{display:block;background:#e8f8ec;border:1px solid #b6e6c3;color:#166534}
+.f-msg.err{display:block;background:#fdecea;border:1px solid #f5c2bd;color:#a11c14}
+
+/* ---------- footer ---------- */
+.ftr{
+  background:var(--black-3);color:rgba(255,255,255,.62);padding:52px 0 26px;font-size:.94rem;
+  border-top:3px solid var(--red);
+}
+.ftr-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:34px}
+@media(max-width:820px){ .ftr-grid{grid-template-columns:1fr 1fr} }
+@media(max-width:520px){ .ftr-grid{grid-template-columns:1fr} }
+.ftr h4{color:#fff;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+.ftr a{color:rgba(255,255,255,.72)}
+.ftr a:hover{color:#fff}
+.ftr li{margin-bottom:9px}
+.ftr .brand{margin-bottom:14px}
+.ftr-bot{
+  margin-top:38px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);
+  display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;font-size:.87rem;
+}
+
+/* ---------- sticky mobile call bar ---------- */
+.callbar{display:none}
+@media(max-width:760px){
+  body{padding-bottom:74px}
+  .callbar{
+    display:grid;grid-template-columns:1fr 1fr;gap:10px;
+    position:fixed;left:0;right:0;bottom:0;z-index:70;
+    padding:11px 14px calc(11px + env(safe-area-inset-bottom));
+    background:rgba(8,8,10,.97);backdrop-filter:blur(10px);
+    border-top:1px solid rgba(255,255,255,.12);
+  }
+  .callbar .btn{width:100%;padding:14px 10px;font-size:1rem}
+  /* black-on-black would vanish against the bar */
+  .callbar .btn-primary{
+    background:transparent;color:#fff;border-color:rgba(255,255,255,.45);box-shadow:none;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================ HEADER ============================ -->
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="#top" aria-label="Memorial Bros — home">
+      <img class="brand-logo" src="logo.png" alt="Memorial Bros" width="383" height="198">
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#results">Results</a>
+      <!-- <a href="#reviews">Reviews</a> ← un-comment when the reviews section goes live -->
+      <a href="#area">Service Area</a>
+      <a class="btn btn-call" href="tel:+14174148650">📞 (417) 414-8650</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============================= HERO ============================= -->
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="pill"><span class="dot"></span> Booking now · Free estimates</span>
+        <h1>Make it look <em>new again.</em></h1>
+        <p class="lede">
+          Driveways, patios, decks, fences, siding — we blast off the years of dirt,
+          mildew and stains that make a nice place look tired. Family-run, insured,
+          and we show up when we say we will.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn-call btn-lg" href="tel:+14174148650">📞 Call (417) 414-8650</a>
+          <a class="btn btn-ghost btn-lg" href="#quote">Get a free quote</a>
+        </div>
+        <p class="hero-note">Serving Houston &amp; surrounding areas · Most quotes back same day</p>
+      </div>
+      <div class="shot">
+        <!-- ▼ REPLACE: <img src="photos/hero.jpg" alt="Freshly pressure washed driveway"> -->
+        <div class="ph"><b>📸</b>Hero photo goes here<br>Wide shot of a clean driveway or house wash</div>
+        <!-- ▼ EDIT: caption the real photo, e.g. "Driveway · Memorial" -->
+        <span class="shot-tag">Driveway · Houston, TX</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ TRUST ============================ -->
+<section class="trust">
+  <div class="wrap">
+    <ul>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.9 8 10 4.6-1.1 8-5 8-10V6l-8-4z"/><path d="m9 12 2 2 4-4"/></svg> Licensed &amp; insured</li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Free, no-pressure quotes</li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> On time, every time</li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-7h6v7"/></svg> Local &amp; family-run</li>
+    </ul>
+  </div>
+</section>
+
+<!-- =========================== SERVICES =========================== -->
+<section id="services">
+  <div class="wrap">
+    <div class="center">
+      <p class="eyebrow">What we clean</p>
+      <h2>Everything outside your house</h2>
+      <p class="lede">Soft wash where it needs to be gentle, high pressure where it doesn't.
+        We bring our own water and power — you don't have to be home.</p>
+    </div>
+
+    <div class="svc-grid">
+      <article class="card">
+        <div class="ico" aria-hidden="true">🚗</div>
+        <h3>Driveways &amp; sidewalks</h3>
+        <p>Concrete stripped back to its real color. Oil spots, rust, tire marks and
+          that grey film that builds up over the years.</p>
+        <a class="price" href="#pricing">From $175 · see pricing →</a>
+      </article>
+
+      <article class="card">
+        <div class="ico" aria-hidden="true">🏠</div>
+        <h3>House &amp; siding soft wash</h3>
+        <p>Low-pressure detergent wash that kills mildew and green growth without
+          forcing water behind your siding.</p>
+        <span class="price ask">Quoted from a photo</span>
+      </article>
+
+      <article class="card">
+        <div class="ico" aria-hidden="true">🪵</div>
+        <h3>Decks, patios &amp; fences</h3>
+        <p>Travertine, pavers, flagstone, wood and composite — each cleaned at the
+          pressure it can actually take. Great prep before you stain or seal.</p>
+        <a class="price" href="#pricing">Patios from $175 →</a>
+      </article>
+
+      <article class="card">
+        <div class="ico" aria-hidden="true">🧹</div>
+        <h3>Gutters &amp; roofline</h3>
+        <p>Gutters cleared and flushed, plus the black streaks scrubbed off the
+          outside face so they actually look clean.</p>
+        <span class="price ask">Quoted from a photo</span>
+      </article>
+
+      <article class="card">
+        <div class="ico" aria-hidden="true">🪟</div>
+        <h3>Windows &amp; screens</h3>
+        <p>Streak-free exterior glass, tracks and screens included. Pairs well with a
+          house wash — book both and save.</p>
+        <span class="price ask">Quoted from a photo</span>
+      </article>
+
+      <article class="card">
+        <div class="ico" aria-hidden="true">🪑</div>
+        <h3>Outdoor furniture &amp; more</h3>
+        <p>Patio sets, grills, playsets, trash bins, retaining walls —
+          if it lives outside, we can clean it.</p>
+        <span class="price ask">Quoted from a photo</span>
+      </article>
+    </div>
+
+    <div class="more">
+      <h3>Need something that isn't on the list?</h3>
+      <p style="margin:0">We're brothers with a truck and a lot of range. Ask us — if we can't do it,
+        we'll tell you who can.</p>
+      <ul class="more-list">
+        <li>Gutter guards</li>
+        <li>Dryer vents</li>
+        <li>Yard cleanup</li>
+        <li>Junk hauling</li>
+        <li>Light landscaping</li>
+        <li>Move-out cleanouts</li>
+        <li>Holiday lights</li>
+        <li>Odd jobs</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== PRICING ============================
+     Numbers come straight from the "Suggested quote" column of the
+     internal quoting model (broom-finish concrete, normal condition,
+     open access). Change them here if the model changes.
+     ================================================================ -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="center">
+      <p class="eyebrow">Straight pricing</p>
+      <h2>What a driveway actually costs</h2>
+      <p class="lede">Most companies make you call to find out. Here's our real pricing —
+        concrete driveway, normal condition, clear access.</p>
+    </div>
+
+    <div class="pt-wrap">
+      <div class="pt-card">
+        <div class="pt-head">
+          <h3>Concrete driveway cleaning</h3>
+          <span>$175 minimum on any job</span>
+        </div>
+        <table class="pt">
+          <thead>
+            <tr><th scope="col">Size</th><th scope="col">Typically</th><th scope="col">Price</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="sz">Up to 600 sq ft</td>
+              <td class="desc">Small pad, walkway, or a short one-car drive</td>
+              <td class="amt">$175</td>
+            </tr>
+            <tr class="pt-feature">
+              <td class="sz">800 sq ft</td>
+              <td class="desc">Standard 40 × 20 two-car driveway</td>
+              <td class="amt">$210</td>
+            </tr>
+            <tr>
+              <td class="sz">1,200 sq ft</td>
+              <td class="desc">Long two-car or a three-car drive</td>
+              <td class="amt">$315</td>
+            </tr>
+            <tr>
+              <td class="sz">1,600 sq ft</td>
+              <td class="desc">Large or estate driveway</td>
+              <td class="amt">$390</td>
+            </tr>
+            <tr>
+              <td class="sz">2,000 sq ft</td>
+              <td class="desc">Very large residential driveway</td>
+              <td class="amt">$485</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="pt-foot">
+          <p><b>Other surfaces adjust from there.</b> Sidewalks and walkways run about 5% more per
+            square foot, patios and pool decks about 20% more — they're slower work with more
+            edges to cut in.</p>
+          <p><b>Premium materials cost more</b> because they have to be cleaned slower and gentler:</p>
+          <ul class="adj">
+            <li>Stamped / sealed concrete +25%</li>
+            <li>Pavers +35%</li>
+            <li>Brick or tile +40%</li>
+            <li>Travertine +50%</li>
+            <li>Flagstone &amp; natural stone +55%</li>
+          </ul>
+          <p style="margin-top:14px">Heavy staining, tight access, or delicate landscaping can move the
+            number. That's why we like a photo first — then the price we send you is the price you pay.</p>
+        </div>
+      </div>
+      <p class="ba-hint" style="margin-top:16px">
+        Not a driveway? <a href="#quote">Send a photo</a> and we'll quote it the same day.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== RESULTS =========================== -->
+<section id="results" style="background:var(--wash);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="center">
+      <p class="eyebrow">Before &amp; after</p>
+      <h2>The difference is the whole pitch</h2>
+      <p class="lede">Drag the slider. This is the same concrete — one pass, no chemicals left behind.</p>
+    </div>
+
+    <div class="ba-wrap">
+      <div class="ba" id="ba">
+        <div class="ba-layer">
+          <!-- ▼ REPLACE: <img src="photos/before.jpg" alt="Driveway before pressure washing"> -->
+          <div class="ph"><b>📸</b>BEFORE photo<br>Dirty driveway / patio</div>
+        </div>
+        <div class="ba-layer ba-after" id="baAfter">
+          <!-- ▼ REPLACE: <img src="photos/after.jpg" alt="Driveway after pressure washing"> -->
+          <div class="ph light"><b>✨</b>AFTER photo<br>Same shot, same angle, cleaned</div>
+        </div>
+        <span class="ba-tag l">Before</span>
+        <span class="ba-tag r">After</span>
+        <div class="ba-handle" id="baHandle"></div>
+        <input class="ba-range" id="baRange" type="range" min="0" max="100" value="50"
+               aria-label="Reveal the after photo">
+      </div>
+      <p class="ba-hint">↔ Drag to compare · shoot before/after from the exact same spot</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ STEPS ============================ -->
+<section id="how">
+  <div class="wrap">
+    <div class="center">
+      <p class="eyebrow">How it works</p>
+      <h2>Three steps, no runaround</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <h3>Send a photo</h3>
+        <p>Text us a picture of the driveway, deck or wall you want cleaned. That's usually
+          all we need to price it.</p>
+      </div>
+      <div class="step">
+        <h3>Get a flat quote</h3>
+        <p>One price, in writing, same day. No hourly surprises and no "while we're here"
+          upsells on the invoice.</p>
+      </div>
+      <div class="step">
+        <h3>We show up and clean</h3>
+        <p>Most jobs take a few hours. You don't have to be home — pay when it's done and
+          you've seen it.</p>
+      </div>
+    </div>
+    <div class="center btn-row" style="margin-top:36px">
+      <a class="btn btn-primary btn-lg" href="sms:+14174148650">💬 Text us a photo</a>
+      <a class="btn btn-outline btn-lg" href="#quote">Fill out the quote form</a>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== REVIEWS ===========================
+     ⚠️  HIDDEN UNTIL THERE ARE REAL REVIEWS.
+     To bring it back: delete the "hidden" attribute on the <section>
+     below, delete the warning line in the header, and replace all three
+     bracketed quotes with real customer words. Never invent testimonials —
+     it's illegal to publish fake ones (FTC) and customers can smell them.
+     ================================================================ -->
+<section id="reviews" class="reviews" hidden>
+  <div class="wrap">
+    <div class="center">
+      <p class="eyebrow">Neighbors say</p>
+      <h2>Word of mouth is the business</h2>
+      <p class="lede">⚠️ Placeholder reviews — swap these for real ones. Never publish invented testimonials.</p>
+    </div>
+    <div class="rev-grid">
+      <div class="rev">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>[Real customer quote goes here — what they had cleaned and what surprised them.]</blockquote>
+        <cite>First name L.<span>Neighborhood · Service</span></cite>
+      </div>
+      <div class="rev">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>[Real customer quote goes here — mention of showing up on time or the price being fair works well.]</blockquote>
+        <cite>First name L.<span>Neighborhood · Service</span></cite>
+      </div>
+      <div class="rev">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>[Real customer quote goes here — a repeat-customer line is the strongest kind.]</blockquote>
+        <cite>First name L.<span>Neighborhood · Service</span></cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================= AREA ============================= -->
+<section id="area">
+  <div class="wrap">
+    <div class="area-grid">
+      <div>
+        <p class="eyebrow">Service area</p>
+        <h2>Where we work</h2>
+        <p class="lede">Based in Houston, TX and working the surrounding neighborhoods.
+          Outside the list? Ask anyway — if we're already out that way, we'll come.</p>
+        <!-- ▼ EDIT: real neighborhoods / suburbs you serve. Good for local SEO. -->
+        <ul class="areas">
+          <li>Memorial</li>
+          <li>Spring Branch</li>
+          <li>Katy</li>
+          <li>Cypress</li>
+          <li>Bellaire</li>
+          <li>West University</li>
+          <li>The Heights</li>
+          <li>Sugar Land</li>
+          <li>Tomball</li>
+        </ul>
+        <div class="btn-row" style="margin-top:26px">
+          <a class="btn btn-primary" href="#quote">Check my address</a>
+        </div>
+      </div>
+      <div class="map-card">
+        <!-- ▼ OPTIONAL: replace with a Google Maps embed of your service radius -->
+        <div class="ph light"><b>🗺️</b>Service-area map<br>Screenshot or Google Maps embed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ QUOTE ============================ -->
+<section id="quote" class="quote">
+  <div class="wrap">
+    <div class="quote-grid">
+      <div>
+        <p class="eyebrow" style="color:var(--aqua)">Free estimate</p>
+        <h2>Tell us what needs cleaning</h2>
+        <p class="lede">Fastest way is a text with a photo. Prefer the form? Fill it out and
+          we'll get back to you the same day, usually within a couple hours.</p>
+        <div class="contact-list">
+          <a href="tel:+14174148650">
+            <span class="ci" aria-hidden="true">📞</span>
+            <span>(417) 414-8650<small>Call — Mon–Sat, 8am–6pm</small></span>
+          </a>
+          <a href="sms:+14174148650">
+            <span class="ci" aria-hidden="true">💬</span>
+            <span>Text a photo<small>Usually the quickest quote</small></span>
+          </a>
+          <a href="mailto:memorialbros@gmail.com">
+            <span class="ci" aria-hidden="true">✉️</span>
+            <span>memorialbros@gmail.com<small>Email us anytime</small></span>
+          </a>
+        </div>
+      </div>
+
+      <form class="qf" id="quoteForm" novalidate>
+        <h3>Request a quote</h3>
+        <p class="sub">Takes about 30 seconds.</p>
+
+        <div class="f-row">
+          <div class="field">
+            <label for="qName">Name <span class="req">*</span></label>
+            <input id="qName" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="qPhone">Phone <span class="req">*</span></label>
+            <input id="qPhone" name="phone" type="tel" autocomplete="tel" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="qAddr">Address or neighborhood</label>
+          <input id="qAddr" name="address" type="text" autocomplete="street-address"
+                 placeholder="So we know it's in our area">
+        </div>
+
+        <div class="field">
+          <label for="qSvc">What needs cleaning?</label>
+          <select id="qSvc" name="service">
+            <option value="">Pick one…</option>
+            <option>Driveway / sidewalk</option>
+            <option>House / siding soft wash</option>
+            <option>Deck, patio or fence</option>
+            <option>Gutters &amp; roofline</option>
+            <option>Windows &amp; screens</option>
+            <option>Outdoor furniture / other</option>
+            <option>Multiple things</option>
+            <option>Not sure — need advice</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="qMsg">Anything else?</label>
+          <textarea id="qMsg" name="message"
+                    placeholder="Rough size, how long since it was last cleaned, any stains you're worried about…"></textarea>
+        </div>
+
+        <button class="btn btn-primary btn-lg" type="submit" id="qBtn">Get my free quote →</button>
+        <p class="f-note">No spam, no robocalls. We only use this to quote your job.</p>
+        <div class="f-msg" id="qMsgBox" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr-grid">
+      <div>
+        <a class="brand" href="#top" aria-label="Memorial Bros — home">
+          <img class="brand-logo" src="logo.png" alt="Memorial Bros" width="383" height="198">
+        </a>
+        <p style="max-width:34ch;margin:0">Family-run exterior cleaning in Houston, TX.
+          Driveways, siding, decks, gutters and whatever else the weather has ruined.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Driveways &amp; concrete</a></li>
+          <li><a href="#services">House &amp; siding wash</a></li>
+          <li><a href="#services">Decks &amp; fences</a></li>
+          <li><a href="#services">Gutters</a></li>
+          <li><a href="#services">Windows</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li><a href="tel:+14174148650">(417) 414-8650</a></li>
+          <li><a href="sms:+14174148650">Text us a photo</a></li>
+          <li><a href="mailto:memorialbros@gmail.com">memorialbros@gmail.com</a></li>
+          <li>Mon–Sat · 8am–6pm</li>
+          <li><a href="#quote">Request a quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ftr-bot">
+      <span>© <span id="yr">2026</span> Memorial Bros. All rights reserved.</span>
+      <span>Licensed &amp; insured · Free estimates</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== STICKY MOBILE CALL BAR ==================== -->
+<div class="callbar">
+  <a class="btn btn-call" href="tel:+14174148650">📞 Call now</a>
+  <a class="btn btn-primary" href="sms:+14174148650">💬 Text a photo</a>
+</div>
+
+<!-- ===================== LOCAL BUSINESS SCHEMA ===================== -->
+<!-- Helps Google show hours / phone / area. Keep in sync with the page. -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"HomeAndConstructionBusiness",
+  "name":"Memorial Bros",
+  "description":"Pressure washing and exterior cleaning: driveways, siding, decks, fences, gutters and windows.",
+  "url":"https://memorialbros.com/",
+  "telephone":"+1-417-414-8650",
+  "email":"memorialbros@gmail.com",
+  "priceRange":"$$",
+  "address":{"@type":"PostalAddress","addressLocality":"Houston","addressRegion":"TX","addressCountry":"US"},
+  "areaServed":[{"@type":"City","name":"Houston"}],
+  "openingHoursSpecification":[{
+    "@type":"OpeningHoursSpecification",
+    "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+    "opens":"08:00","closes":"18:00"
+  }]
+}
+</script>
+
+<script>
+/* ---------------------------------------------------------------
+   CONFIG
+   FORM_ENDPOINT: paste a Formspree (or similar) endpoint to have the
+   quote form email you. Leave it "" and the form falls back to opening
+   a pre-filled text message to BUSINESS_SMS — which honestly converts
+   fine for a local service business and needs zero third-party setup.
+   --------------------------------------------------------------- */
+var FORM_ENDPOINT = "";                 // e.g. "https://formspree.io/f/abcdwxyz"
+var BUSINESS_SMS  = "+14174148650";     // ← your real number
+
+/* ---------- footer year ---------- */
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ---------- before / after slider ---------- */
+(function(){
+  var range  = document.getElementById('baRange');
+  var after  = document.getElementById('baAfter');
+  var handle = document.getElementById('baHandle');
+  if(!range) return;
+  function paint(){
+    var v = range.value;
+    after.style.clipPath = 'inset(0 0 0 ' + v + '%)';
+    handle.style.left = v + '%';
+  }
+  range.addEventListener('input', paint);
+  paint();
+})();
+
+/* ---------- quote form ---------- */
+(function(){
+  var form = document.getElementById('quoteForm');
+  if(!form) return;
+  var box  = document.getElementById('qMsgBox');
+  var btn  = document.getElementById('qBtn');
+
+  function show(kind, text){
+    box.className = 'f-msg ' + kind;
+    box.textContent = text;
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name  = form.name.value.trim();
+    var phone = form.phone.value.trim();
+
+    if(!name || !phone){
+      show('err', 'Please add your name and a phone number so we can reach you.');
+      return;
+    }
+    if(phone.replace(/\D/g,'').length < 10){
+      show('err', 'That phone number looks short — please include the area code.');
+      return;
+    }
+
+    var data = {
+      name:    name,
+      phone:   phone,
+      address: form.address.value.trim(),
+      service: form.service.value,
+      message: form.message.value.trim()
+    };
+
+    /* No endpoint configured → hand off to the phone's messaging app. */
+    if(!FORM_ENDPOINT){
+      var body =
+        'Quote request from memorialbros.com\n' +
+        'Name: ' + data.name + '\n' +
+        'Phone: ' + data.phone +
+        (data.address ? '\nAddress: ' + data.address : '') +
+        (data.service ? '\nService: ' + data.service : '') +
+        (data.message ? '\nNotes: '   + data.message : '');
+      window.location.href = 'sms:' + BUSINESS_SMS + '?&body=' + encodeURIComponent(body);
+      show('ok', 'Opening a text message with your details — just hit send. Or call us at ' +
+                 '(417) 414-8650.');
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type':'application/json', 'Accept':'application/json' },
+      body: JSON.stringify(data)
+    })
+    .then(function(res){
+      if(!res.ok) throw new Error('bad status ' + res.status);
+      form.reset();
+      show('ok', 'Got it, ' + data.name.split(' ')[0] + ' — we\'ll text or call you back today with a price.');
+    })
+    .catch(function(){
+      show('err', 'Something went wrong sending that. Please call or text us at (417) 414-8650 instead.');
+    })
+    .finally(function(){
+      btn.disabled = false;
+      btn.textContent = 'Get my free quote →';
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
