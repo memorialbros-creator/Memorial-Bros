@@ -2,5 +2,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://memorialbros.com/sitemap.xml
-
-
