@@ -30,14 +30,14 @@
      ========================================================================== -->
 
 <title>Memorial Bros — Pressure Washing &amp; Exterior Cleaning in Houston, TX</title>
-<meta name="description" content="Memorial Bros pressure washes driveways, patios, decks, fences, siding and more. Family-run, insured, free estimates. Serving Houston and surrounding areas.">
+<meta name="description" content="A group of high school boys from Memorial High. Pressure washing, gutters, windows, lawns and junk hauling around Houston. Email us and we'll set up a time. Free estimates.">
 <meta name="theme-color" content="#0f0f12">
 <link rel="canonical" href="https://memorialbros.com/">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://memorialbros.com/">
 <meta property="og:title" content="Memorial Bros — Pressure Washing &amp; Exterior Cleaning">
-<meta property="og:description" content="Driveways, patios, decks, fences, siding, gutters. Family-run and insured. Free estimates, fast text-back quotes.">
+<meta property="og:description" content="High school boys from Memorial High. Pressure washing, gutters, windows, lawns, junk hauling — all sorts of jobs. Email us and we'll set up a time.">
 <meta property="og:image" content="https://memorialbros.com/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -435,6 +435,7 @@ form.qf .sub{font-size:.94rem;margin:0 0 22px}
 .field{margin-bottom:14px}
 .field label{display:block;font-weight:700;font-size:.88rem;color:var(--ink);margin-bottom:6px}
 .field .req{color:#d0342c}
+.field .hint{display:block;font-size:.78rem;color:#8a8b93;margin-top:5px;font-weight:600}
 .field input,.field select,.field textarea{
   width:100%;font:inherit;font-size:1rem;color:var(--ink);background:#fcfcfd;
   border:1.5px solid var(--line);border-radius:11px;padding:13px 14px;
@@ -489,6 +490,27 @@ form.qf .btn{width:100%;margin-top:6px}
   }
 }
 
+/* ==========================================================================
+   AWAITING PHOTOS
+   The hero shot, the before/after slider and the service-area map are all
+   hidden until real photos exist — a live site showing "photo goes here"
+   reads as abandoned. Each is one attribute away from coming back:
+     hero shot   → remove hidden from <div class="shot" hidden>
+     before/after→ remove hidden from <section id="results" hidden>
+                   and un-comment the Results link in the nav
+     map         → remove hidden from <div class="map-card" hidden>
+   Then delete the three overrides below.
+   ========================================================================== */
+.hero-grid{grid-template-columns:1fr}
+.hero-grid > div:first-child{max-width:720px}
+.area-grid{grid-template-columns:1fr}
+.area-grid > div:first-child{max-width:760px}
+
+/* clickable price badges need a 44px tap target on phones */
+@media(max-width:760px){
+  a.price{padding:11px 16px}
+}
+
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
   html{scroll-behavior:auto}
@@ -506,10 +528,10 @@ form.qf .btn{width:100%;margin-top:6px}
     <nav class="nav" aria-label="Main">
       <a href="#services">Services</a>
       <a href="#pricing">Pricing</a>
-      <a href="#results">Results</a>
+      <!-- <a href="#results">Results</a> ← un-comment when before/after photos are in -->
       <!-- <a href="#reviews">Reviews</a> ← un-comment when the reviews section goes live -->
       <a href="#area">Service Area</a>
-      <a class="btn btn-call" href="tel:+14174148650">📞 (417) 414-8650</a>
+      <a class="btn btn-call" href="mailto:memorialbros@gmail.com">✉️ Email us</a>
     </nav>
   </div>
 </header>
@@ -521,19 +543,19 @@ form.qf .btn{width:100%;margin-top:6px}
     <div class="hero-grid">
       <div>
         <span class="pill"><span class="dot"></span> Booking now · Free estimates</span>
-        <h1>Make it look <em>new again.</em></h1>
+        <h1>Strip the <em>years off.</em></h1>
         <p class="lede">
-          Driveways, patios, decks, fences, siding — we blast off the years of dirt,
-          mildew and stains that make a nice place look tired. Family-run, insured,
-          and we show up when we say we will.
+          We're a group of high school boys from Memorial High. We pressure-wash driveways
+          and patios, clean gutters, wash windows, mow lawns and haul junk — all sorts of
+          jobs. Email us and we'll set up a time that works for you.
         </p>
         <div class="btn-row">
-          <a class="btn btn-call btn-lg" href="tel:+14174148650">📞 Call (417) 414-8650</a>
+          <a class="btn btn-call btn-lg" href="mailto:memorialbros@gmail.com">✉️ Email us</a>
           <a class="btn btn-ghost btn-lg" href="#quote">Get a free quote</a>
         </div>
         <p class="hero-note">Serving Houston &amp; surrounding areas · Most quotes back same day</p>
       </div>
-      <div class="shot">
+      <div class="shot" hidden>
         <!-- ▼ REPLACE: <img src="photos/hero.jpg" alt="Freshly pressure washed driveway"> -->
         <div class="ph"><b>📸</b>Hero photo goes here<br>Wide shot of a clean driveway or house wash</div>
         <!-- ▼ EDIT: caption the real photo, e.g. "Driveway · Memorial" -->
@@ -547,10 +569,10 @@ form.qf .btn{width:100%;margin-top:6px}
 <section class="trust">
   <div class="wrap">
     <ul>
-      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.9 8 10 4.6-1.1 8-5 8-10V6l-8-4z"/><path d="m9 12 2 2 4-4"/></svg> Licensed &amp; insured</li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.9 8 10 4.6-1.1 8-5 8-10V6l-8-4z"/><path d="m9 12 2 2 4-4"/></svg> Memorial High students</li>
       <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Free, no-pressure quotes</li>
       <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> On time, every time</li>
-      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-7h6v7"/></svg> Local &amp; family-run</li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-7h6v7"/></svg> Local crew, Houston-based</li>
     </ul>
   </div>
 </section>
@@ -571,7 +593,7 @@ form.qf .btn{width:100%;margin-top:6px}
         <h3>Driveways &amp; sidewalks</h3>
         <p>Concrete stripped back to its real color. Oil spots, rust, tire marks and
           that grey film that builds up over the years.</p>
-        <a class="price" href="#pricing">From $175 · see pricing →</a>
+        <a class="price" href="#pricing">From $200 · see pricing →</a>
       </article>
 
       <article class="card">
@@ -587,7 +609,7 @@ form.qf .btn{width:100%;margin-top:6px}
         <h3>Decks, patios &amp; fences</h3>
         <p>Travertine, pavers, flagstone, wood and composite — each cleaned at the
           pressure it can actually take. Great prep before you stain or seal.</p>
-        <a class="price" href="#pricing">Patios from $175 →</a>
+        <a class="price" href="#pricing">Patios from $200 →</a>
       </article>
 
       <article class="card">
@@ -617,8 +639,8 @@ form.qf .btn{width:100%;margin-top:6px}
 
     <div class="more">
       <h3>Need something that isn't on the list?</h3>
-      <p style="margin:0">We're brothers with a truck and a lot of range. Ask us — if we can't do it,
-        we'll tell you who can.</p>
+      <p style="margin:0">We'll take on all sorts of jobs — if it needs doing around the
+        outside of your house, just ask. If we can't do it, we'll tell you who can.</p>
       <ul class="more-list">
         <li>Gutter guards</li>
         <li>Dryer vents</li>
@@ -651,7 +673,7 @@ form.qf .btn{width:100%;margin-top:6px}
       <div class="pt-card">
         <div class="pt-head">
           <h3>Concrete driveway cleaning</h3>
-          <span>$175 minimum on any job</span>
+          <span>$200 minimum on any job</span>
         </div>
         <table class="pt">
           <thead>
@@ -661,27 +683,27 @@ form.qf .btn{width:100%;margin-top:6px}
             <tr>
               <td class="sz">Up to 600 sq ft</td>
               <td class="desc">Small pad, walkway, or a short one-car drive</td>
-              <td class="amt">$175</td>
+              <td class="amt">$200</td>
             </tr>
             <tr class="pt-feature">
               <td class="sz">800 sq ft</td>
               <td class="desc">Standard 40 × 20 two-car driveway</td>
-              <td class="amt">$210</td>
+              <td class="amt">$240</td>
             </tr>
             <tr>
               <td class="sz">1,200 sq ft</td>
               <td class="desc">Long two-car or a three-car drive</td>
-              <td class="amt">$315</td>
+              <td class="amt">$350</td>
             </tr>
             <tr>
               <td class="sz">1,600 sq ft</td>
               <td class="desc">Large or estate driveway</td>
-              <td class="amt">$390</td>
+              <td class="amt">$430</td>
             </tr>
             <tr>
               <td class="sz">2,000 sq ft</td>
               <td class="desc">Very large residential driveway</td>
-              <td class="amt">$485</td>
+              <td class="amt">$500</td>
             </tr>
           </tbody>
         </table>
@@ -709,7 +731,7 @@ form.qf .btn{width:100%;margin-top:6px}
 </section>
 
 <!-- =========================== RESULTS =========================== -->
-<section id="results" style="background:var(--wash);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+<section id="results" hidden style="background:var(--wash);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="wrap">
     <div class="center">
       <p class="eyebrow">Before &amp; after</p>
@@ -748,7 +770,7 @@ form.qf .btn{width:100%;margin-top:6px}
     <div class="steps">
       <div class="step">
         <h3>Send a photo</h3>
-        <p>Text us a picture of the driveway, deck or wall you want cleaned. That's usually
+        <p>Email us a picture of the driveway, deck or wall you want cleaned. That's usually
           all we need to price it.</p>
       </div>
       <div class="step">
@@ -763,7 +785,7 @@ form.qf .btn{width:100%;margin-top:6px}
       </div>
     </div>
     <div class="center btn-row" style="margin-top:36px">
-      <a class="btn btn-primary btn-lg" href="sms:+14174148650">💬 Text us a photo</a>
+      <a class="btn btn-primary btn-lg" href="mailto:memorialbros@gmail.com?subject=Photo%20of%20the%20job">✉️ Email us a photo</a>
       <a class="btn btn-outline btn-lg" href="#quote">Fill out the quote form</a>
     </div>
   </div>
@@ -828,7 +850,7 @@ form.qf .btn{width:100%;margin-top:6px}
           <a class="btn btn-primary" href="#quote">Check my address</a>
         </div>
       </div>
-      <div class="map-card">
+      <div class="map-card" hidden>
         <!-- ▼ OPTIONAL: replace with a Google Maps embed of your service radius -->
         <div class="ph light"><b>🗺️</b>Service-area map<br>Screenshot or Google Maps embed</div>
       </div>
@@ -843,20 +865,20 @@ form.qf .btn{width:100%;margin-top:6px}
       <div>
         <p class="eyebrow" style="color:var(--aqua)">Free estimate</p>
         <h2>Tell us what needs cleaning</h2>
-        <p class="lede">Fastest way is a text with a photo. Prefer the form? Fill it out and
-          we'll get back to you the same day, usually within a couple hours.</p>
+        <p class="lede">Fastest way is an email with a photo attached. Prefer the form? Fill it
+          out and we'll get back to you the same day, usually within a couple hours.</p>
         <div class="contact-list">
-          <a href="tel:+14174148650">
-            <span class="ci" aria-hidden="true">📞</span>
-            <span>(417) 414-8650<small>Call — Mon–Sat, 8am–6pm</small></span>
-          </a>
-          <a href="sms:+14174148650">
-            <span class="ci" aria-hidden="true">💬</span>
-            <span>Text a photo<small>Usually the quickest quote</small></span>
-          </a>
           <a href="mailto:memorialbros@gmail.com">
             <span class="ci" aria-hidden="true">✉️</span>
-            <span>memorialbros@gmail.com<small>Email us anytime</small></span>
+            <span>memorialbros@gmail.com<small>Email us — fastest way to reach us</small></span>
+          </a>
+          <a href="mailto:memorialbros@gmail.com?subject=Photo%20of%20the%20job">
+            <span class="ci" aria-hidden="true">📷</span>
+            <span>Send a photo<small>Attach a picture and we'll price it</small></span>
+          </a>
+          <a href="tel:+14174148650">
+            <span class="ci" aria-hidden="true">📞</span>
+            <span>(417) 414-8650<small>Mon–Sat, 4pm–8pm</small></span>
           </a>
         </div>
       </div>
@@ -865,14 +887,23 @@ form.qf .btn{width:100%;margin-top:6px}
         <h3>Request a quote</h3>
         <p class="sub">Takes about 30 seconds.</p>
 
+        <div class="field">
+          <label for="qName">Name <span class="req">*</span></label>
+          <input id="qName" name="name" type="text" autocomplete="name" required>
+        </div>
+
         <div class="f-row">
           <div class="field">
-            <label for="qName">Name <span class="req">*</span></label>
-            <input id="qName" name="name" type="text" autocomplete="name" required>
+            <label for="qPhone">Phone <span class="req">*</span></label>
+            <input id="qPhone" name="phone" type="tel" autocomplete="tel"
+                   placeholder="(281) 555-0100" required>
+            <span class="hint">Best way to reach you</span>
           </div>
           <div class="field">
-            <label for="qPhone">Phone <span class="req">*</span></label>
-            <input id="qPhone" name="phone" type="tel" autocomplete="tel" required>
+            <label for="qEmail">Email</label>
+            <input id="qEmail" name="email" type="email" autocomplete="email"
+                   placeholder="you@example.com">
+            <span class="hint">Optional if you gave a phone</span>
           </div>
         </div>
 
@@ -903,6 +934,11 @@ form.qf .btn{width:100%;margin-top:6px}
                     placeholder="Rough size, how long since it was last cleaned, any stains you're worried about…"></textarea>
         </div>
 
+        <!-- Honeypot. Invisible to people, irresistible to bots. If anything ends
+             up in here the submission is silently dropped — see the script below. -->
+        <input type="text" name="_honey" id="qHoney" tabindex="-1" autocomplete="off"
+               aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+
         <button class="btn btn-primary btn-lg" type="submit" id="qBtn">Get my free quote →</button>
         <p class="f-note">No spam, no robocalls. We only use this to quote your job.</p>
         <div class="f-msg" id="qMsgBox" role="status" aria-live="polite"></div>
@@ -920,8 +956,9 @@ form.qf .btn{width:100%;margin-top:6px}
         <a class="brand" href="#top" aria-label="Memorial Bros — home">
           <img class="brand-logo" src="logo.png" alt="Memorial Bros" width="383" height="198">
         </a>
-        <p style="max-width:34ch;margin:0">Family-run exterior cleaning in Houston, TX.
-          Driveways, siding, decks, gutters and whatever else the weather has ruined.</p>
+        <p style="max-width:34ch;margin:0">High school boys from Memorial High, working
+          after school and weekends around Houston. Pressure washing, yard work, gutters,
+          hauling — all sorts of jobs.</p>
       </div>
       <div>
         <h4>Services</h4>
@@ -937,25 +974,25 @@ form.qf .btn{width:100%;margin-top:6px}
       <div>
         <h4>Get in touch</h4>
         <ul>
-          <li><a href="tel:+14174148650">(417) 414-8650</a></li>
-          <li><a href="sms:+14174148650">Text us a photo</a></li>
           <li><a href="mailto:memorialbros@gmail.com">memorialbros@gmail.com</a></li>
-          <li>Mon–Sat · 8am–6pm</li>
+          <li><a href="mailto:memorialbros@gmail.com?subject=Photo%20of%20the%20job">Email us a photo</a></li>
+          <li><a href="tel:+14174148650">(417) 414-8650</a></li>
+          <li>Mon–Sat · 4pm–8pm</li>
           <li><a href="#quote">Request a quote</a></li>
         </ul>
       </div>
     </div>
     <div class="ftr-bot">
       <span>© <span id="yr">2026</span> Memorial Bros. All rights reserved.</span>
-      <span>Licensed &amp; insured · Free estimates</span>
+      <span>Memorial High students · Free estimates</span>
     </div>
   </div>
 </footer>
 
 <!-- ==================== STICKY MOBILE CALL BAR ==================== -->
 <div class="callbar">
-  <a class="btn btn-call" href="tel:+14174148650">📞 Call now</a>
-  <a class="btn btn-primary" href="sms:+14174148650">💬 Text a photo</a>
+  <a class="btn btn-call" href="mailto:memorialbros@gmail.com">✉️ Email us</a>
+  <a class="btn btn-primary" href="#quote">Get a quote</a>
 </div>
 
 <!-- ===================== LOCAL BUSINESS SCHEMA ===================== -->
@@ -965,7 +1002,7 @@ form.qf .btn{width:100%;margin-top:6px}
   "@context":"https://schema.org",
   "@type":"HomeAndConstructionBusiness",
   "name":"Memorial Bros",
-  "description":"Pressure washing and exterior cleaning: driveways, siding, decks, fences, gutters and windows.",
+  "description":"A group of high school students from Memorial High offering pressure washing, gutter cleaning, window washing, lawn mowing, leaf raking and junk hauling around Houston.",
   "url":"https://memorialbros.com/",
   "telephone":"+1-417-414-8650",
   "email":"memorialbros@gmail.com",
@@ -975,21 +1012,33 @@ form.qf .btn{width:100%;margin-top:6px}
   "openingHoursSpecification":[{
     "@type":"OpeningHoursSpecification",
     "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-    "opens":"08:00","closes":"18:00"
+    "opens":"16:00","closes":"20:00"
   }]
 }
 </script>
 
 <script>
 /* ---------------------------------------------------------------
-   CONFIG
-   FORM_ENDPOINT: paste a Formspree (or similar) endpoint to have the
-   quote form email you. Leave it "" and the form falls back to opening
-   a pre-filled text message to BUSINESS_SMS — which honestly converts
-   fine for a local service business and needs zero third-party setup.
+   QUOTE FORM CONFIG
+
+   Submissions are POSTed to FormSubmit, which forwards them straight to
+   BUSINESS_EMAIL. No account, no API key, no server, free.
+
+   ⚠️  ONE-TIME ACTIVATION — the form will NOT deliver until you do this:
+       1. Open the live site and send yourself a test quote request
+       2. FormSubmit emails memorialbros@gmail.com asking you to confirm
+          (check spam — it often lands there the first time)
+       3. Click the activation link
+       Every submission after that arrives in the inbox automatically.
+
+   To switch providers later, just replace FORM_ENDPOINT with a Formspree
+   or Web3Forms URL — the payload shape works with both.
+
+   If the POST fails for any reason, the form falls back to opening a
+   pre-filled email in the visitor's mail app, so a lead is never lost.
    --------------------------------------------------------------- */
-var FORM_ENDPOINT = "";                 // e.g. "https://formspree.io/f/abcdwxyz"
-var BUSINESS_SMS  = "+14174148650";     // ← your real number
+var BUSINESS_EMAIL = "memorialbros@gmail.com";    // ← where quote requests go
+var FORM_ENDPOINT  = "https://formsubmit.co/ajax/" + BUSINESS_EMAIL;
 
 /* ---------- footer year ---------- */
 document.getElementById('yr').textContent = new Date().getFullYear();
@@ -1021,42 +1070,74 @@ document.getElementById('yr').textContent = new Date().getFullYear();
     box.textContent = text;
   }
 
+  /* Opens the visitor's mail app with everything pre-filled. Used as the
+     fallback if the POST fails, so a lead is never silently dropped. */
+  function mailtoFallback(d){
+    var body =
+      'Quote request from memorialbros.com\n\n' +
+      'Name: '  + d.name + '\n' +
+      'Phone: ' + (d.phone || '(not given)') + '\n' +
+      'Email: ' + (d.email || '(not given)') +
+      (d.address ? '\nAddress: ' + d.address : '') +
+      (d.service ? '\nService: ' + d.service : '') +
+      (d.message ? '\nNotes: '   + d.message : '') +
+      '\n\nTip: attach a photo of the job before sending — it speeds up the quote.';
+    window.location.href = 'mailto:' + BUSINESS_EMAIL +
+      '?subject=' + encodeURIComponent('Quote request - ' + d.name) +
+      '&body='    + encodeURIComponent(body);
+  }
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    var name  = form.name.value.trim();
-    var phone = form.phone.value.trim();
 
-    if(!name || !phone){
-      show('err', 'Please add your name and a phone number so we can reach you.');
+    /* Honeypot tripped → a bot filled a field no human can see. Show the normal
+       success message so the bot doesn't learn, but send nothing. */
+    var honey = document.getElementById('qHoney');
+    if(honey && honey.value){
+      show('ok', 'Thanks — we\'ll be in touch.');
+      form.reset();
       return;
     }
-    if(phone.replace(/\D/g,'').length < 10){
+
+    var name  = form.name.value.trim();
+    var phone = form.phone.value.trim();
+    var email = form.email.value.trim();
+
+    if(!name){
+      show('err', 'Please add your name.');
+      form.name.focus();
+      return;
+    }
+    /* Phone is preferred, but an email alone is enough to reach them. */
+    if(!phone && !email){
+      show('err', 'Please add a phone number so we can reach you — or an email if you\'d rather.');
+      form.phone.focus();
+      return;
+    }
+    if(phone && phone.replace(/\D/g,'').length < 10){
       show('err', 'That phone number looks short — please include the area code.');
+      form.phone.focus();
+      return;
+    }
+    if(email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){
+      show('err', 'That email address doesn\'t look right — mind checking it?');
+      form.email.focus();
       return;
     }
 
     var data = {
       name:    name,
-      phone:   phone,
-      address: form.address.value.trim(),
-      service: form.service.value,
-      message: form.message.value.trim()
+      phone:   phone || '(not given)',
+      email:   email || '(not given)',
+      address: form.address.value.trim() || '(not given)',
+      service: form.service.value        || '(not specified)',
+      message: form.message.value.trim() || '(none)',
+      _subject: 'New quote request from ' + name,
+      _template: 'table',
+      _captcha: 'false'
     };
-
-    /* No endpoint configured → hand off to the phone's messaging app. */
-    if(!FORM_ENDPOINT){
-      var body =
-        'Quote request from memorialbros.com\n' +
-        'Name: ' + data.name + '\n' +
-        'Phone: ' + data.phone +
-        (data.address ? '\nAddress: ' + data.address : '') +
-        (data.service ? '\nService: ' + data.service : '') +
-        (data.message ? '\nNotes: '   + data.message : '');
-      window.location.href = 'sms:' + BUSINESS_SMS + '?&body=' + encodeURIComponent(body);
-      show('ok', 'Opening a text message with your details — just hit send. Or call us at ' +
-                 '(417) 414-8650.');
-      return;
-    }
+    /* So hitting Reply in your inbox goes straight to the customer */
+    if(email) data._replyto = email;
 
     btn.disabled = true;
     btn.textContent = 'Sending…';
@@ -1069,10 +1150,14 @@ document.getElementById('yr').textContent = new Date().getFullYear();
     .then(function(res){
       if(!res.ok) throw new Error('bad status ' + res.status);
       form.reset();
-      show('ok', 'Got it, ' + data.name.split(' ')[0] + ' — we\'ll text or call you back today with a price.');
+      var how = phone ? 'call or text you back' : 'email you back';
+      show('ok', 'Got it, ' + name.split(' ')[0] + ' — we\'ll ' + how + ' today with a price.');
     })
     .catch(function(){
-      show('err', 'Something went wrong sending that. Please call or text us at (417) 414-8650 instead.');
+      /* Endpoint unreachable or not activated yet — don't lose the lead. */
+      show('err', 'We couldn\'t send that automatically. Opening an email with your ' +
+                  'details instead — just hit send, or write to memorialbros@gmail.com.');
+      mailtoFallback(data);
     })
     .finally(function(){
       btn.disabled = false;
